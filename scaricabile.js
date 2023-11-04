@@ -136,15 +136,20 @@ const button = document.querySelector("#button");
 const getValue = function (input) {
   return input.value;
 };
-
+// Funzione per selezionare il tag ul e un tag p con le loro classi
 const addResult = function () {
   const ul = document.querySelector("ul.list");
   ul.innerHTML = "";
+  const p = document.querySelector(".count");
   // ul.innerHTML += `<li> ${getValue(inputJob)} ${getValue(inputLocation)} </li>`;
 
   const jobResult = [];
-  if (!input.title || !input.location) {
-    p.innerHTML = "Compila i campi!";
+  let counter = 0;
+  // Controllo nel caso l'utente clicchi con i campi vuoti
+  if (inputJob.value === "" && inputLocation.value === "") {
+    console.log("Compila tutti i campi");
+    alert("Compila tutti i campi");
+    return false;
   }
   for (let i = 0; i < jobs.length; i++) {
     if (
@@ -154,10 +159,11 @@ const addResult = function () {
         .includes(getValue(inputLocation).toLowerCase())
     ) {
       jobResult.push(jobs[i]);
+      counter = jobResult.length;
+      p.innerText = `Risultato: ${counter}`;
       ul.innerHTML += `<li>${jobs[i].title} ${jobs[i].location}</li>`;
     }
   }
-  console.log("Hai trovato", jobResult.length);
   inputJob.value = "";
   inputLocation.value = "";
 };

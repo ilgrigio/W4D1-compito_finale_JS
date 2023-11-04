@@ -2,22 +2,50 @@
 <html lang="en">
   <head>
     <link rel="stylesheet" href="./style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Searching Job</title>
   </head>
   <body>
-    <h1>Search a Job and Location</h1>
-    <div class="search">
-      <label for="job">Type for a Job</label>
-      <input type="text" id="job" />
-      <label for="location">Type for a Location</label>
-      <input type="text" id="geo" />
-      <button id="button">Click to Search</button>
+    <div class="container">
+      <div class="content">
+        <h1>Search a Job and Location</h1>
+        <div class="search">
+          <div class="placeholder">
+            <p>Type for a Job<ion-icon name="construct-outline"></ion-icon></p>
+            <input placeholder="Job" type="text" id="job" class="input" />
+          </div>
+          <div class="placeholder">
+            <p>Type for a Location<ion-icon name="map-outline"></ion-icon></p>
+            <input placeholder="Location" type="text" id="geo" class="input" />
+          </div>
+          <br /><br />
+        </div>
+        <button type="button" id="button">
+          <ion-icon name="search-outline"></ion-icon>
+          Click to Search
+        </button>
+
+        <main>
+          <p class="count"></p>
+          <ul class="list"></ul>
+        </main>
+      </div>
     </div>
-    <main>
-      <ul class="list"></ul>
-    </main>
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
     <script src="./scaricabile.js"></script>
   </body>
 </html>
