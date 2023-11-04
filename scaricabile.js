@@ -1,8 +1,11 @@
 /*
 PARTE 1: 
 Oggi analizzeremo un problema molto comune: realizzare algoritmi di ricerca.
-Il tuo compito è creare una funzione che cercherà per posizione lavorativa E posizione geografica. Questi due valori verranno 
-passati come parametri. Ti abbiamo fornito un array chiamato "jobs" in fondo al file, NON modificarlo in alcun modo.
+Il tuo compito è creare una funzione che cercherà per posizione lavorativa E posizione geografica. 
+Questi due valori verranno passati come parametri.
+
+!Ti abbiamo fornito un array chiamato "jobs" in fondo al file, NON modificarlo in alcun modo.
+
 L'algoritmo che devi realizzare cercherà SIA per posizione lavorativa che per posizione geografica.
 Prendi queste tre inserzioni ad esempio:
 
@@ -28,8 +31,8 @@ PARTE 2:
 Nella pagina HTML, inserisci 2 input di tipo testo (uno per la location e uno per il titolo lavorativo, ricordati di
 diversificarli con un id) e un bottone con valore “cerca”
 
-Al click del bottone, il codice deve raccogliere i valori dei due input e darli in pasto alla funzione che hai creato
-nella parte 1. 
+Al click del bottone, il codice deve raccogliere i valori dei due input e darli in pasto alla funzione
+che hai creato nella parte 1. 
 
 Dopo aver raccolto ed elaborato i dati, e’ il momento di mostrare i risultati sulla pagina: 
     Puoi scegliere tu se utilizzare un semplice ul / li oppure una tabella 
@@ -126,33 +129,52 @@ const jobs = [
   },
 ];
 
-// creare una funzione che cercherà per posizione lavorativa E posizione geografica.
-const searchForJob = function (job, loc) {
-  const result = [];
+const inputJob = document.querySelector("#job");
+const inputLocation = document.querySelector("#geo");
+const button = document.querySelector("#button");
 
+const getValue = function (input) {
+  return input.value;
+};
+
+const addResult = function () {
+  const ul = document.querySelector("ul.list");
+  ul.innerHTML = "";
+  // ul.innerHTML += `<li> ${getValue(inputJob)} ${getValue(inputLocation)} </li>`;
+
+  const jobResult = [];
+  if (!input.title || !input.location) {
+    p.innerHTML = "Compila i campi!";
+  }
   for (let i = 0; i < jobs.length; i++) {
     if (
-      jobs[i].title.toLowerCase().includes(job.toLowerCase()) &&
-      jobs[i].location.toLowerCase().includes(loc.toLowerCase())
+      jobs[i].title.toLowerCase().includes(getValue(inputJob).toLowerCase()) &&
+      jobs[i].location
+        .toLowerCase()
+        .includes(getValue(inputLocation).toLowerCase())
     ) {
-      result.push(jobs[i]);
+      jobResult.push(jobs[i]);
+      ul.innerHTML += `<li>${jobs[i].title} ${jobs[i].location}</li>`;
     }
   }
-  return { result: result, count: result.length };
+  console.log("Hai trovato", jobResult.length);
+  inputJob.value = "";
+  inputLocation.value = "";
 };
-console.log(searchForJob("dev", "US"));
+button.addEventListener("click", addResult);
+// console.log(jobResult);
+// button.onclick = addResult;
+// inputJob.addEventListener("change", addResult);
+// inputLocation.addEventListener("change", addResult);
 
-// // Funzione per la Ricerca
-// const researchResult = function () {
-//   const job = "";
-//   const loc = "";
-//   const position = document.querySelector("#job").value;
-//   const location = document.querySelector("#location").value;
+// let button = document.querySelector("#button");
+// let ul = document.querySelector(".list");
 
-//   const researchResult = searchForJob(job, loc);
-//   for (let i = 0; i < searchForJob.length; i++) {
-//     const ul = document.querySelector(".list");
-//     console.log(ul);
-//     ul.innerHTML += "<li>" + " " + "</li>";
-//   }
+// // creare una funzione che cercherà per posizione lavorativa e posizione geografica.
+//   let locationInput = document.querySelector("#location");
+//   let positionInput = document.querySelector("#job");
+// const searchForJob = function (title, location) {
 // };
+// console.log(searchForJob);
+//       positionInput.addEventListener("change", searchForJob);
+//       locationInput.addEventListener("change", searchForJob);
