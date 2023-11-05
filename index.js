@@ -150,7 +150,7 @@ const addResult = function () {
   const noResult = "Nessun risultato!";
   // Controllo nel caso l'utente clicchi con i campi vuoti
   if (inputJob.value === "" && inputLocation.value === "") {
-    console.log("Compila tutti i campi");
+    // console.log("Compila tutti i campi");
     alert("Compila tutti i campi");
     return false;
   } // Cerco la corrispondenza con l'array jobs con quello scritto nei campi input
