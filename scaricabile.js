@@ -141,6 +141,7 @@ const addResult = function () {
   const ul = document.querySelector("ul.list");
   ul.innerHTML = "";
   const p = document.querySelector(".count");
+  const div = document.querySelector("main");
   // ul.innerHTML += `<li> ${getValue(inputJob)} ${getValue(inputLocation)} </li>`;
 
   const jobResult = [];
@@ -162,6 +163,7 @@ const addResult = function () {
       counter = jobResult.length;
       p.innerText = `Risultato: ${counter}`;
       ul.innerHTML += `<li>${jobs[i].title} ${jobs[i].location}</li>`;
+      div.style.visibility = "visible";
     }
   }
   inputJob.value = "";
