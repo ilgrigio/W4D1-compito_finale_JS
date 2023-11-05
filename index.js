@@ -129,6 +129,7 @@ const jobs = [
   },
 ];
 
+// Uso il querySelector per selezionare gli specifici selettori CSS
 const inputJob = document.querySelector("#job");
 const inputLocation = document.querySelector("#geo");
 const button = document.querySelector("#button");
@@ -146,12 +147,13 @@ const addResult = function () {
 
   const jobResult = [];
   let counter = 0;
+  const noResult = "Nessun risultato!";
   // Controllo nel caso l'utente clicchi con i campi vuoti
   if (inputJob.value === "" && inputLocation.value === "") {
     console.log("Compila tutti i campi");
     alert("Compila tutti i campi");
     return false;
-  }
+  } // Cerco la corrispondenza con l'array jobs con quello scritto nei campi input
   for (let i = 0; i < jobs.length; i++) {
     if (
       jobs[i].title.toLowerCase().includes(getValue(inputJob).toLowerCase()) &&
@@ -159,30 +161,19 @@ const addResult = function () {
         .toLowerCase()
         .includes(getValue(inputLocation).toLowerCase())
     ) {
+      // Se c'è corrispondenza aggiungo e faccio visualizzare i risultati con il contatore
       jobResult.push(jobs[i]);
       counter = jobResult.length;
       p.innerText = `Risultato: ${counter}`;
       ul.innerHTML += `<li>${jobs[i].title} ${jobs[i].location}</li>`;
       div.style.visibility = "visible";
     }
-  }
+    if (jobResult.length === 0) {
+      p.innerText = `${noResult}`;
+    }
+  } // Svuoto i valori dei campi input per una nuova ricerca
   inputJob.value = "";
   inputLocation.value = "";
 };
 button.addEventListener("click", addResult);
 // console.log(jobResult);
-// button.onclick = addResult;
-// inputJob.addEventListener("change", addResult);
-// inputLocation.addEventListener("change", addResult);
-
-// let button = document.querySelector("#button");
-// let ul = document.querySelector(".list");
-
-// // creare una funzione che cercherà per posizione lavorativa e posizione geografica.
-//   let locationInput = document.querySelector("#location");
-//   let positionInput = document.querySelector("#job");
-// const searchForJob = function (title, location) {
-// };
-// console.log(searchForJob);
-//       positionInput.addEventListener("change", searchForJob);
-//       locationInput.addEventListener("change", searchForJob);
